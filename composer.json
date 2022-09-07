@@ -12,5 +12,17 @@
             "email": "masitingss@gmail.com"
         }
     ],
-    "require": {}
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Masitings\\Opensea\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Masitings\\Opensea\\OpenseaServiceProvider"
+            ]
+        }
+    }
 }
