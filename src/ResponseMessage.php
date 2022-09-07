@@ -19,7 +19,7 @@ class ResponseMessage
      * @param mixed $code
      * @param $data
      */
-    protected static function boilerplate_response($success, int $code, $data): Mixed
+    protected static function boilerplate_response($success, int $code, $data)
     {
         return [
             'success' => $success,
