@@ -1,0 +1,16 @@
+{
+    "name": "masitings/opensea-sdk",
+    "description": "An Opensea SDK for PHP Development",
+    "autoload": {
+        "psr-4": {
+            "Masitings\\OpenseaSdk\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Rafi Halilintar",
+            "email": "masitingss@gmail.com"
+        }
+    ],
+    "require": {}
+}
