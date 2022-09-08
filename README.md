@@ -34,7 +34,7 @@ OPENSEA_COLLECTION=[the collection slug from opensea]
 #### Get Collection
 This function is used to retrieve more in-depth information about an individual collection, including real time statistics such as floor price.
 ```php
-$collection = 'karafuru';
+$collection = 'moondogz-official';
 $opensea = Opensea::get_collection($collection);
 return $opensea;
 ```
@@ -43,7 +43,7 @@ The variable collection was an optional if you have declare the OPENSEA_COLLECTI
 #### Get Collection Statistic
 This function can be used to fetch stats for a specific collection, including real-time floor price data.
 ```php
-$collection = 'karafuru';
+$collection = 'moondogz-official';
 $opensea = Opensea::get_collection_stat($collection);
 return $opensea;
 ```
