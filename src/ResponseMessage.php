@@ -1,6 +1,6 @@
 <?php
 
-namespace Masitings\Opensea;
+namespace Antikode\Opensea;
 
 class ResponseMessage
 {

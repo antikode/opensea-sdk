@@ -1,6 +1,6 @@
 <?php
 
-namespace Masitings\Opensea;
+namespace Antikode\Opensea;
 
 use Illuminate\Support\ServiceProvider;
 
