@@ -13,7 +13,7 @@ This package will help you to integrate Opensea API to your Laravel Project or P
 Install the package in your Laravel Project.
 
 ```sh
-composer require antikode/opensea-sdk
+composer require masiting/opensea-sdk
 ```
 
 ## Usage
