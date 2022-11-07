@@ -6,16 +6,56 @@ use Illuminate\Support\Facades\Http;
 
 class Opensea extends ResponseMessage
 {
-    protected static function get_request($parameter)
+    protected static function get_request($parameter, $isV2 = false)
     {
         try {
+            if ($isV2) {
+                $version = 'v2';
+            } else {
+                $version = 'api/v1';
+            }
+            $url = 'https://api.opensea.io/'.$version;
             $client = Http::withHeaders([
                 'X-API-KEY' => config('opensea.key'),
-            ])->baseUrl('https://api.opensea.io/api/v1')->get($parameter);
+            ])->baseUrl($url)->get($parameter);
             return $client->json();
         } catch (\Exception $e) {
             return self::error_response($e->getMessage(), $e->getCode());
         }
+    }
+
+    public static function getListings($tokenId, $contractAddr = null)
+    {
+
+        if ($contractAddr == null) {
+            $contractAddr = config('opensea.contract_address');
+        }
+        $array = [
+            'asset_contract_address' => $contractAddr,
+            'token_ids' => $tokenId,
+            'order_by' => 'created_date',
+            'order_direction' => 'desc',
+        ];
+        $query = http_build_query($array);
+        $get = self::get_request('/orders/ethereum/seaport/listings?'.$query, true);
+        return $get;
+    }
+
+    public static function getOffers($tokenId, $contractAddr = null)
+    {
+
+        if ($contractAddr == null) {
+            $contractAddr = config('opensea.contract_address');
+        }
+        $array = [
+            'asset_contract_address' => $contractAddr,
+            'token_ids' => $tokenId,
+            'order_by' => 'created_date',
+            'order_direction' => 'desc',
+        ];
+        $query = http_build_query($array);
+        $get = self::get_request('/orders/ethereum/seaport/offers?'.$query, true);
+        return $get;
     }
 
     public static function get_collection($collection = null)
