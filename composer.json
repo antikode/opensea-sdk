@@ -1,9 +1,9 @@
 {
-    "name": "masiting/opensea-sdk",
+    "name": "antikode/opensea-sdk",
     "description": "An Opensea SDK for PHP Development",
     "autoload": {
         "psr-4": {
-            "Masiting\\OpenseaSdk\\": "src/"
+            "Antikode\\OpenseaSdk\\": "src/"
         }
     },
     "authors": [
@@ -15,13 +15,13 @@
     "require": {},
     "autoload": {
         "psr-4": {
-            "Masiting\\Opensea\\": "src/"
+            "Antikode\\Opensea\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Masiting\\Opensea\\OpenseaServiceProvider"
+                "Antikode\\Opensea\\OpenseaServiceProvider"
             ]
         }
     },
