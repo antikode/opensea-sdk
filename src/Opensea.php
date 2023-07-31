@@ -92,33 +92,37 @@ class Opensea extends ResponseMessage
         ];
         $query = http_build_query($array);
         $get = self::get_request('/assets?'.$query);
-        if (count($get['assets']) > 0) {
-            if ($token_id != null) {
-                $asset = $get['assets'][0];
-                $valid = [
-                    'token_exist' => true,
-                    'token_id' => $asset['token_id'],
-                    'total_token' => count($get['assets']),
-                    'metadata' => [
-                        'img' => $asset['image_url'],
-                        'name' => $asset['name'],
-                        'description' => $asset['description'],
-                        'owner' => $asset['owner'],
-                        'traits' => $asset['traits']
-                    ]
-                ];
+        if (isset($get['assets'])) {
+            if (count($get['assets']) > 0) {
+                if ($token_id != null) {
+                    $asset = $get['assets'][0];
+                    $valid = [
+                        'success' => true,
+                        'token_exist' => true,
+                        'token_id' => $asset['token_id'],
+                        'total_token' => count($get['assets']),
+                        'metadata' => [
+                            'img' => $asset['image_url'],
+                            'name' => $asset['name'],
+                            'description' => $asset['description'],
+                            'owner' => $asset['owner'],
+                            'traits' => $asset['traits']
+                        ]
+                    ];
+                } else {
+                    $valid = [
+                        'success' => true,
+                        'token_exist' => true,
+                        'total_token' => count($get['assets']),
+                    ];
+                }
             } else {
                 $valid = [
-                    'token_exist' => true,
-                    'total_token' => count($get['assets']),
+                    'success' => false,
+                    'token_exist' => false,
+                    'data' => $get
                 ];
             }
-        } else {
-            $valid = [
-                'token_exist' => false,
-                'token_id' => null,
-                'metadata' => null
-            ];
         }
         return self::success_response($valid, 200);
     }
