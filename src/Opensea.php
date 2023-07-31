@@ -123,6 +123,12 @@ class Opensea extends ResponseMessage
                     'data' => $get
                 ];
             }
+        } else {
+            $valid = [
+                'success' => false,
+                'token_exist' => null,
+                'data' => $get
+            ];
         }
         return self::success_response($valid, 200);
     }
